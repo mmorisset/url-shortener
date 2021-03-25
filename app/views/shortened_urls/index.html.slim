@@ -1,0 +1,5 @@
+= simple_form_for @shortened_url do |f|
+  .input-group.mt-5
+    = f.input :original_url, placeholder: 'https://...', label: false
+    .input-group-append
+      = f.button :submit, "Shorten URL", { class: 'btn btn-outline-secondary' }
