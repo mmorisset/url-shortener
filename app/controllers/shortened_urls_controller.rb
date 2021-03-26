@@ -8,8 +8,7 @@ class ShortenedUrlsController < ApplicationController
   end
 
   def create
-    @shortened_url.update_attributes(shortened_url_params)
-    @shortened_url.save
+    @shortened_url.update(shortened_url_params)
     respond_with @shortened_url
   end
 
