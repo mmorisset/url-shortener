@@ -14,6 +14,7 @@ class ShortenedUrlsController < ApplicationController
   end
 
   def show
+    @shortened_url = ShortenedUrl.find(params[:id])
   end
 
   protected
