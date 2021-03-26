@@ -3,3 +3,10 @@
     = f.input :original_url, placeholder: 'https://...', label: false, type: 'url'
     .input-group-append
       = f.button :submit, "Shorten URL", { class: 'action-shorten-url btn btn-outline-secondary' }
+
+- @shortened_urls.each do |current_shortened_url|
+  .details
+    p
+      = current_shortened_url.original_url
+
+    a.btn.btn.btn-outline-secondary.action-delete href=shortened_url_path(current_shortened_url) data-shortened-url-id=current_shortened_url.id data-method="delete"

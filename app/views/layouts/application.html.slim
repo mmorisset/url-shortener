@@ -9,5 +9,6 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .container-fluid
+      = render 'layouts/flash_messages'
       = yield
 
