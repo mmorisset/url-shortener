@@ -1,4 +1,4 @@
-const utils = (function() {
+const utils = (() => {
 
   var REQUEST_OPTIONS = {
     dataType: 'html',
@@ -50,7 +50,7 @@ const utils = (function() {
   }
 
   function whenPageReadyIfExists(selector, callback) {
-    whenPageReady(function() {
+    whenPageReady(() => {
       ifExists(selector, callback);
     });
   }
