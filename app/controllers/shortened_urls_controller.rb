@@ -14,6 +14,11 @@ class ShortenedUrlsController < ApplicationController
     respond_with @shortened_url
   end
 
+  def redirect
+    @shortened_url = ShortenedUrl.find_by(token: params[:token])
+    redirect_to @shortened_url&.original_url || '/', status: :moved_permanently
+  end
+
   protected
 
   def build_shortened_url
