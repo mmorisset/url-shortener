@@ -9,6 +9,10 @@ class ShortenedUrlsController < ApplicationController
     respond_with @shortened_url
   end
 
+  def show
+    @activity = @shortened_url.last_hour_activity_by_minute
+  end
+
   def destroy
     @shortened_url.destroy
     respond_with @shortened_url
@@ -16,6 +20,9 @@ class ShortenedUrlsController < ApplicationController
 
   def redirect
     @shortened_url = ShortenedUrl.find_by(token: params[:token])
+    if @shortened_url
+      StoreEventJob.perform_later(name: 'visited_url', shortened_url_token: @shortened_url.token, created_at: Time.now.utc)
+    end
     redirect_to @shortened_url&.original_url || '/', status: :moved_permanently
   end
 

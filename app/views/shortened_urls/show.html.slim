@@ -2,4 +2,13 @@
   p
     = @shortened_url.original_url
 
+  a href=@shortened_url.short_url target="_blank"
+    = @shortened_url.short_url
+
   a.btn.btn.btn-outline-secondary.action-delete href=shortened_url_path(@shortened_url) data-method="delete"
+
+  - if @activity.flatten.any?
+    #chart data-activity=@activity
+  - else
+    .no-activity
+      p There are no activity yet, share your shortened URL to get some !

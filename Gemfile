@@ -34,6 +34,12 @@ gem 'simple_form'
 
 gem 'responders'
 
+gem 'elasticsearch-persistence'
+
+gem 'sidekiq'
+
+gem 'gaston'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -50,6 +56,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Better command line interface
+  gem 'pry', '~> 0.10'
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
 
 end
 
