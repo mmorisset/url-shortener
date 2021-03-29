@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+## Developement:
 
-* System dependencies
+Copy .env.sample file into .env file
 
-* Configuration
+### Avec Docker
 
-* Database creation
+- Install docker desktop for mac
 
-* Database initialization
+- Run:
+```
+docker-compose build
+docker-compose up
+```
 
-* How to run the test suite
+### Sans Docker
 
-* Services (job queues, cache servers, search engines, etc.)
+- Install dependancies and make sure they are runnning:
+  - postgres
+  - redis
+  - elastic-search
+  - yarn
 
-* Deployment instructions
 
-* ...
+Run:
+```
+gem install bundler
+bundle
+yarn install
+rails s
+```
+
+
+## Testing
+
+- Run serveur:
+```
+CYPRESS=1 rails s -p 5017
+```
+
+- Run Cypress:
+```
+yarn cypress open
+```
