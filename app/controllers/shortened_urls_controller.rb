@@ -6,7 +6,7 @@ class ShortenedUrlsController < ApplicationController
 
   def create
     @shortened_url.update(shortened_url_params)
-    respond_with @shortened_url
+    respond_with @shortened_url, location: shortened_urls_url
   end
 
   def show

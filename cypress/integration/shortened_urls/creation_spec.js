@@ -9,7 +9,7 @@ describe('shortened URL creation', () => {
     cy.get('.shortened_url_original_url').type(URL)
     cy.get('.action-shorten-url').click()
     cy.location().should((loc) => {
-      expect(loc.pathname).to.eq('/shortened_urls/1');
+      expect(loc.pathname).to.eq('/shortened_urls');
     });
     cy.get('.details').contains(URL);
     cy.get('.toastr .notice').contains('Shortened url was successfully created');
@@ -26,12 +26,15 @@ describe('shortened URL creation', () => {
   });
 
   it('shows an error when the URL given is invalid', () => {
+    const URL = 'not_an_url';
+
     cy.visit('/');
-    cy.get('.shortened_url_original_url').type('not_an_url')
-    cy.get('.action-shorten-url').click()
+    cy.get('.shortened_url_original_url').type(URL);
+    cy.get('.action-shorten-url').click();
     cy.location().should((loc) => {
       expect(loc.pathname).to.eq('/shortened_urls');
     });
+    cy.contains(URL).should('not.exist')
     cy.get('.shortened_url_original_url .invalid-feedback').contains("Original url must be a valid URL");
     cy.get('.toastr .alert').contains('Shortened url could not be created');
   });
