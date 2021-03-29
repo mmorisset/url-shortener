@@ -11,10 +11,11 @@ describe('shortened URL deletion', () => {
       ]).then((results) => {
         const shortenedUrl = results[0];
         cy.visit('/');
-        cy.get(`.action-delete, [data-shortened-url-id="${shortenedUrl.id}"]`).click();
+        cy.get(`[data-shortened-url-id="${shortenedUrl.id}"].action-delete`).click();
         cy.location().should((loc) => {
           expect(loc.pathname).to.eq('/shortened_urls');
         });
+        cy.contains(shortenedUrl.original_url).should('not.exist')
         cy.get('.toastr .notice').contains('Shortened url was successfully destroyed');
       });
     })
@@ -32,6 +33,7 @@ describe('shortened URL deletion', () => {
         cy.location().should((loc) => {
           expect(loc.pathname).to.eq('/shortened_urls');
         });
+        cy.contains(shortenedUrl.original_url).should('not.exist')
         cy.get('.toastr .notice').contains('Shortened url was successfully destroyed');
       });
     })
