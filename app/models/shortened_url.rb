@@ -42,7 +42,6 @@ class ShortenedUrl < ApplicationRecord
       }
     })
 
-
     buckets = result.raw_response['aggregations']['events']['buckets']
     dates = buckets.map do |bucket|
       DateTime.parse(bucket['key_as_string']).strftime('%F %T')

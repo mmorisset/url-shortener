@@ -62,6 +62,7 @@ group :development do
   gem 'pry-doc'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
+  gem 'rubocop-rails', require: false
 
 end
 
