@@ -1,0 +1,7 @@
+development: &default
+  host: <%= ENV['HOSTNAME'] %>
+  port: <%= ENV['DATABASE_PORT'] || '9200' %>
+  log: true
+
+test:
+  <<: *default

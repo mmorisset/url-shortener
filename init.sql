@@ -1,0 +1,2 @@
+CREATE USER username;
+ALTER USER username WITH SUPERUSER;
