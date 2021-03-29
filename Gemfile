@@ -41,8 +41,6 @@ gem 'elasticsearch-persistence'
 
 gem 'sidekiq'
 
-gem 'gaston'
-
 gem 'dotenv-rails'
 
 group :development, :test do
