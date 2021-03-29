@@ -8,7 +8,7 @@ class ShortenedUrl < ApplicationRecord
   validates :token, presence: true, uniqueness: true
 
   def short_url
-    "#{ENV['APP_HOST']}/#{token}"
+    "#{ENV['APP_URL']}/#{token}"
   end
 
   def last_hour_activity_by_minute
