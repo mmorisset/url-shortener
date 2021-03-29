@@ -21,7 +21,7 @@ class ShortenedUrlsController < ApplicationController
   def redirect
     @shortened_url = ShortenedUrl.find_by(token: params[:token])
     if @shortened_url
-      StoreEventJob.perform_later(name: 'visited_url', shortened_url_token: @shortened_url.token, created_at: Time.now.utc)
+      AnalyticsEvents::Service.track_event(:visited_url, shortened_url_token: @shortened_url.token)
     end
     redirect_to @shortened_url&.original_url || '/', status: :moved_permanently
   end
