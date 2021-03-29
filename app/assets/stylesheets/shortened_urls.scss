@@ -5,3 +5,19 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'toastr/build/toastr.min';
 @import 'c3/c3.min.css';
+
+
+#shortened_url_original_url {
+  height: 50px;
+  width: 300px;
+}
+
+.action-shorten-url {
+  height: 50px;
+}
+
+.details {
+  p {
+    margin-bottom: 0px;
+  }
+}

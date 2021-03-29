@@ -1,14 +1,26 @@
-.details
-  p
-    = @shortened_url.original_url
+.details.mt-3
+  .card.mb-3
+    .card-header
+      .row.align-items-center.justify-content-between
+        .col-9.details
+          p
+            a href=@shortened_url.short_url target="_blank"
+              = @shortened_url.short_url
+            | &nbsp;=>&nbsp;
+            = @shortened_url.original_url
 
-  a href=@shortened_url.short_url target="_blank"
-    = @shortened_url.short_url
+        .col-2.actions.d-flex.justify-content-end
+          a.btn.btn.btn-secondary.action-back.mr-2 href=shortened_urls_path
+            | Back
 
-  a.btn.btn.btn-outline-secondary.action-delete href=shortened_url_path(@shortened_url) data-method="delete"
+          a.btn.btn.btn-danger.action-delete href=shortened_url_path(@shortened_url) data-shortened-url-id=@shortened_url.id data-method="delete"
+            | Delete
 
-  - if @activity.flatten.any?
-    #chart data-activity=@activity
-  - else
-    .no-activity
-      p There are no activity yet, share your shortened URL to get some !
+    .card-body
+      h5
+        | Activity
+      - if @activity.flatten.any?
+        #chart data-activity=@activity
+      - else
+        .no-activity.text-center
+          p There are no activity yet, share your shortened URL to get some !

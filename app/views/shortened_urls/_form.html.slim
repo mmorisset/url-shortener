@@ -1,20 +1,28 @@
-= simple_form_for shortened_url do |f|
-  .input-group.mt-5
-    = f.input :original_url, placeholder: 'https://...', label: false, type: 'url'
-    .input-group-append
-      = f.button :submit, "Shorten URL", { class: 'action-shorten-url btn btn-outline-secondary' }
+.form.d-flex.justify-content-center
+  = simple_form_for shortened_url do |f|
+    .input-group.mt-5
+      = f.input :original_url, placeholder: 'https://...', label: false
+      .input-group-append
+        = f.button :submit, "Shorten URL", { class: 'action-shorten-url btn btn-primary' }
 
 - @shortened_urls.each do |current_shortened_url|
-  .details
-    p
-      = current_shortened_url.original_url
+  .card.mb-3
+    .card-body
+      .row.align-items-center.justify-content-between
+        .col-9.details
+          p
+            a href=current_shortened_url.short_url target="_blank"
+              = current_shortened_url.short_url
+            | &nbsp;=>&nbsp;
+            = current_shortened_url.original_url
 
-    a href=current_shortened_url.short_url target="_blank"
-      = current_shortened_url.short_url
+        .col-2.actions.d-flex.justify-content-end
+
+          a.btn.btn.btn-primary.action-show.mr-2 href=shortened_url_path(current_shortened_url) data-shortened-url-id=current_shortened_url.id
+            | Show
+
+          a.btn.btn.btn-danger.action-delete href=shortened_url_path(current_shortened_url) data-shortened-url-id=current_shortened_url.id data-method="delete"
+            | Delete
 
 
-    a.btn.btn.btn-outline-secondary.action-show href=shortened_url_path(current_shortened_url) data-shortened-url-id=current_shortened_url.id
-      | Show
 
-    a.btn.btn.btn-outline-secondary.action-delete href=shortened_url_path(current_shortened_url) data-shortened-url-id=current_shortened_url.id data-method="delete"
-      | Delete
