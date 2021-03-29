@@ -5,6 +5,9 @@ ruby '2.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
+
+gem 'bundler', '~> 2.2.15'
+
 # Use postgreSQL as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -39,6 +42,8 @@ gem 'elasticsearch-persistence'
 gem 'sidekiq'
 
 gem 'gaston'
+
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
